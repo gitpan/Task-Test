@@ -5,7 +5,6 @@ use inc::Module::Install 1.00;
 # Workaround for the fact that Module::Install loads the modules
 # into memory and when Test::NoWarnings is loaded it will hide
 # the warnings generated from that point.
-# Removed in r2208, added again in r9001
 eval {
 	require Test::NoWarnings;
 	$SIG{__WARN__} = 'DEFAULT';
@@ -16,7 +15,7 @@ eval {
 # WON'T load modules to determine the version.
 # This _SHOULD_ theoretically make the "require Test::NoWarnings".
 # stuff above here no longer needed.
-configure_requires 'ExtUtils::MakeMaker' => '6.52';
+configure_requires 'ExtUtils::MakeMaker' => '6.98';
 
 
 name 'Task-Test';
@@ -25,52 +24,64 @@ author 'Gabor Szabo';
 all_from 'lib/Task/Test.pm';
 requires 'perl' => '5.008005';
 
-requires 'Test::Exception'      => '0.27';
-requires 'Test::More'           => '0.88';
-requires 'Test::Most'           => '0';
-requires 'Test::MockObject'     => '1.09';
-requires 'Test::NoWarnings'     => '0.084';
-requires 'Test::Output'         => '0';
+requires 'Test::Exception'      => '0.32';
+requires 'Test::More'           => '1.001003';
+requires 'Test::Most'           => '0.33';
+requires 'Test::MockObject'     => '1.20140408';
+requires 'Test::NoWarnings'     => '1.04';
+requires 'Test::Output'         => '1.03';
 requires 'Test::Perl::Critic'   => '1.02';
-requires 'Test::Pod'            => '1.45';
-requires 'Test::Pod::Coverage'  => '1.08';
+requires 'Test::Pod'            => '1.48';
+requires 'Test::Pod::Coverage'  => '1.10';
 requires 'Test::Script'         => '1.07';
-requires 'Test::WWW::Mechanize' => '0';
-
-requires 'Test::Warn'           => '0';
-requires 'Test::Strict'         => '0';
-requires 'Test::Deep'           => '0';
-requires 'Test::Distribution'   => '0';
-requires 'Test::MockObject'     => '0';
-requires 'Test::Inline'         => '0';
+requires 'Test::WWW::Mechanize' => '1.44';
+requires 'Test::Warn'           => '0.30';
+requires 'Test::Strict'         => '0.23';
+requires 'Test::Deep'           => '0.112';
+requires 'Test::Distribution'   => '2.00';
+requires 'Test::Inline'         => '2.213';
 requires 'Test::Snapshots'      => '0.02';
+requires 'Test::Kwalitee'       => '1.19';
+requires 'Test::Spelling'       => '0.19';
+requires 'Test::DatabaseRow'    => '2.04';
+requires 'Test::Differences'    => '0.62';
+requires 'Test::Memory::Cycle'  => '1.04';
+requires 'Test::Taint'          => '1.06';
+requires 'Test::Class'          => '0.46';
+requires 'Test::Class::Moose'   => '0.54';
+requires 'Test::FailWarnings'   => '0.008';
+requires 'Test::Warnings'       => '0.016';
+requires 'Test::Fatal'          => '0.013';
+requires 'Test::File'           => '1.36';
+requires 'Test::LongString'     => '0.15';
+
+
+requires 'Test::HTML::Lint'     => '2.20';
+requires 'HTML::Lint'           => '2.20';
+#requires 'Test::WWW::Simple'    => '0.34';
+
+requires 'Fennec'               => '2.017';
+requires 'Fennec::Declare'      => '1.002';
+
+
 requires 'Win32::GuiTest'       => '1.60' if win32;
 requires 'Win32::GUIRobot'      => '0.05' if win32;
-requires 'Test::Kwalitee'       => '0';
-requires 'Pod::Spell'           => '0';
-requires 'Test::Spelling'       => '0';
-requires 'Devel::Cover'         => '0';
-requires 'HTML::Lint'           => '0';
-requires 'LWP'                  => '0';
-requires 'LWP::Simple'          => '0';
-requires 'Test::HTML::Lint'     => '0';
-#requires 'Test::WWW::Simple'    => '0';
-requires 'HTTP::Proxy'          => '0';
-#requires 'HTTP::Recorder'       => '0';
-requires 'Test::DatabaseRow'    => '0';
-requires 'File::Compare'        => '0';
-requires 'Text::Diff'           => '0';
-requires 'Test::Exception'      => '0';
-requires 'Test::Differences'    => '0';
-requires 'DBD::Mock'            => '0';
-#requires 'Test::Unit'           => '0';
-requires 'IPC::Run'             => '0';
-requires 'IPC::Run3'            => '0';
-requires 'Test::Memory::Cycle'  => '0';
-requires 'Test::Taint'          => '0';
-requires 'Test::Class'          => '0';
-requires 'Test::Class::Moose'   => '0';
 
+requires 'Pod::Spell'           => '1.15';
+requires 'Devel::Cover'         => '1.15';
+requires 'Devel::NYTProf'       => '5.06';
+
+requires 'LWP::UserAgent'       => '6.06';
+requires 'LWP::Simple'          => '6.00';
+requires 'LWP::Protocol::https' => '6.04';
+requires 'HTTP::Proxy'          => '0.300';
+#requires 'HTTP::Recorder'       => '0.07';
+requires 'File::Compare'        => '0'; # core
+requires 'Text::Diff'           => '1.41';
+requires 'DBD::Mock'            => '1.45';
+#requires 'Test::Unit'           => '0.25';
+requires 'IPC::Run'             => '0.92';
+requires 'IPC::Run3'            => '0.048';
 
 requires 'Selenium::Remote::Driver' => '0.2102';
 requires 'Test::Expect'             => '0.31';
@@ -78,7 +89,10 @@ requires 'Test::Class'              => '0.46';
 requires 'Test::Mock::Simple'       => '0.04';
 requires 'Test::MockTime'           => '0.12';
 requires 'Test::Class::Moose'       => '0.54';
-requires 'X11::GUITest'             => '0.28';
+requires 'X11::GUITest'             => '0.28' if $^O eq 'linux';
+requires 'Capture::Tiny'            => '0.24';
+
+requires 'List::MoreUtils'          => '0.33';
 
 
 no_index 'directory' => qw{ t xt eg share inc privinc };
