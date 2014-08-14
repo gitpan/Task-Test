@@ -19,6 +19,7 @@ no_index:
     - inc
     - t
 requires:
+  Browser::Open: '0.04'
   Capture::Tiny: '0.24'
   DBD::Mock: '1.45'
   Data::Random: '0.11'
@@ -38,6 +39,7 @@ requires:
   IO::Socket: '1.25'
   IPC::Run: '0.92'
   IPC::Run3: '0.048'
+  JSON::XS: '3.01'
   LWP::Protocol::https: '6.04'
   LWP::Simple: '6.00'
   LWP::UserAgent: '6.06'
@@ -47,14 +49,21 @@ requires:
   Net::SSH::Perl: '1.37'
   Net::Server: '2.008'
   Net::Telnet: '3.04'
+  PPI::HTML: '1.08'
+  Parallel::Iterator: '1.00'
+  Perl::Tidy: '20140711'
   Plack: '1.0031'
+  Pod::Coverage: '0.23'
+  Pod::Coverage::CountParents: 0
   Pod::Spell: '1.15'
   Selenium::Remote::Driver: '0.2102'
   Smolder: '1.51'
   TAP::Formatter::HTML: '0.11'
+  Template: '2.25'
   Term::ANSIColor: '4.03'
   Test::Class: '0.46'
   Test::Class::Moose: '0.54'
+  Test::Compile: 1.2.0
   Test::DatabaseRow: '2.04'
   Test::Deep: '0.112'
   Test::Differences: '0.62'
@@ -91,7 +100,7 @@ requires:
   Test::Warnings: '0.016'
   Test::XPath: '0.16'
   Text::Diff: '1.41'
-  WWW::Mechanize::Firefox: '0.75'
+  WWW::Mechanize::Firefox: '0.76'
   WWW::Mechanize::PhantomJS: '0.06'
   perl: '5.008005'
 resources:
@@ -99,4 +108,4 @@ resources:
   homepage: https://github.com/szabgab/Task-Test
   license: http://dev.perl.org/licenses/
   repository: https://github.com/szabgab/Task-Test
-version: '0.05'
+version: '0.06'
